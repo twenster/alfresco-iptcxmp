@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+    <!-- While this one adds it for the Tika Auto-Detect extractor -->
+   <bean id="extracter.TikaAuto" class="org.alfresco.repo.content.metadata.TikaAutoMetadataExtracter" parent="baseMetadataExtracter">
+        <constructor-arg><ref bean="tikaConfig"/></constructor-arg>
+        <property name="inheritDefaultMapping">
+            <value>true</value>
+        </property>
+        <property name="mappingProperties">
+            <props>
+                <prop key="namespace.prefix.cm">http://www.alfresco.org/model/content/1.0</prop>
+                <prop key="namespace.prefix.btdam">http://www.bata.com/model/digitalasset/1.0</prop>
+                <prop key="namespace.prefix.iptcxmp">http://www.bata.com/model/iptcxmp/1.0</prop>
+                <prop key="namespace.prefix.dc">http://purl.org/dc/elements/1.1/</prop>
+                <prop key="namespace.prefix.Iptc4xmpCore">http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/</prop>
+                <prop key="namespace.prefix.Iptc4xmpExt">http://iptc.org/std/Iptc4xmpExt/2008-02-29/</prop>
+                <prop key="namespace.prefix.photoshop">http://ns.adobe.com/photoshop/1.0/</prop>
+                <prop key="namespace.prefix.plus">http://ns.useplus.org/ldf/xmp/1.0/</prop>
+                <prop key="namespace.prefix.xmpRights">http://ns.adobe.com/xap/1.0/rights/</prop>
+
+                <!-- Start of CM -->
+                <prop key="title">cm:title</prop>
+                <prop key="description">cm:description</prop>
+
+                <!-- Start of IPTC Core -->
+                <prop key="Copyright Notice">dc:rights</prop>
+                <prop key="created">photoshop:DateCreated</prop>
+                <prop key="creator">dc:creator</prop>
+                <prop key="Credit">photoshop:Credit</prop>
+                <prop key="description">dc:description</prop>
+                <prop key="Headline">photoshop:Headline</prop>
+                <prop key="Object Attribute Reference">Iptc4xmpCore:IntellectualGenre</prop>
+                <prop key="Original Transmission Reference">photoshop:TransmissionReference</prop>
+                <prop key="Special Instructions">photoshop:Instructions</prop>
+                <prop key="Sub-location">Iptc4xmpCore:Location</prop>
+                <prop key="subject">dc:subject</prop>
+                <prop key="title">dc:title</prop>
+
+                <!-- currently unused? -->
+                <prop key="Authors Position">photoshop:AuthorsPosition</prop>
+                <prop key="Caption Writer">photoshop:CaptionWriter</prop>
+                <prop key="CiAdrCity">Iptc4xmpCore:CiAdrCity</prop> <!-- Ci = Contact Information -->
+                <prop key="CiAdrCtry">Iptc4xmpCore:CiAdrCtry</prop>
+                <prop key="CiAdrExtadr">Iptc4xmpCore:CiAdrExtadr</prop>
+                <prop key="CiAdrPcode">Iptc4xmpCore:CiAdrPcode</prop>
+                <prop key="CiAdrRegion">Iptc4xmpCore:CiAdrRegion</prop>
+                <prop key="CiEmailWork">Iptc4xmpCore:CiEmailWork</prop>
+                <prop key="CiTelWork">Iptc4xmpCore:CiTelWork</prop>
+                <prop key="City">photoshop:City</prop>
+                <prop key="CiUrlWork">Iptc4xmpCore:CiUrlWork</prop>
+                <prop key="Country">photoshop:Country</prop>
+                <prop key="CountryCode">Iptc4xmpCore:CountryCode</prop>
+                <prop key="Scene">Iptc4xmpCore:Scene</prop>
+                <prop key="Source">photoshop:Source</prop>
+                <prop key="State">photoshop:State</prop>
+                <prop key="Subject Code">Iptc4xmpCore:SubjectCode</prop>
+                <prop key="Usage Terms">xmpRights:Usage Terms</prop>
+
+                <!-- Deprecated elements -->
+                <prop key="Category">photoshop:Category</prop>
+                <prop key="Supplemental Categories">photoshop:SupplementalCategories</prop>
+                <prop key="Urgency">photoshop:Urgency</prop>
+                <!-- End of IPTC Core -->
+
+                <!-- Start of IPTC Ext -->
+                <prop key="Addl Model Info">Iptc4xmpExt:AddlModelInfo</prop> <!-- Additional Model Information-->
+                <prop key="AO Copyright Notice">Iptc4xmpExt:AOCopyrightNotice</prop> <!-- AO = Artwork or Object -->
+                <prop key="AO Creator">Iptc4xmpExt:AOCreator</prop>
+                <prop key="Reference Number">Iptc4xmpExt:AODateCreated</prop>
+                <prop key="Reference Service">Iptc4xmpExt:AOSourceInvNo</prop>
+                <prop key="AO Source">Iptc4xmpExt:AOSource</prop>
+                <prop key="Object Name">Iptc4xmpExt:AOTitle</prop>
+                <prop key="Copyright Owner Id">plus:CopyrightOwnerId</prop>
+                <prop key="Copyright Owner Name">plus:CopyrightOwnerName</prop>
+                <prop key="CVterm">Iptc4xmpExt:CVterm</prop> <!-- deprecated, Controlled Vocabulary Term-->
+                <prop key="Dig Image GUID">Iptc4xmpExt:DigImageGUID</prop>
+                <prop key="Digital Source file Type">Iptc4xmpExt:DigitalSourcefileType</prop>
+                <prop key="Digital Source Type">Iptc4xmpExt:DigitalSourceType</prop>
+                <prop key="Event">Iptc4xmpExt:Event</prop>
+                <prop key="Image Creator Id">plus:ImageCreatorId</prop>
+                <prop key="Image Creator Name">plus:ImageCreatorName</prop>
+                <prop key="Image Supplier Id">plus:ImageSupplierId</prop>
+                <prop key="Image Supplier Image ID">plus:ImageSupplierImageID</prop>
+                <prop key="Image Supplier Name">plus:ImageSupplierName</prop>
+                <prop key="Iptc Last Edited">Iptc4xmpExt:IptcLastEdited</prop>
+                <prop key="Licensor City">plus:LicensorCity</prop>
+                <prop key="Licensor Country">plus:LicensorCountry</prop>
+                <prop key="Licensor Email">plus:LicensorEmail</prop>
+                <prop key="Licensor Extended Address">plus:LicensorExtendedAddress</prop>
+                <prop key="Licensor Id">plus:LicensorId</prop>
+                <prop key="Licensor Name">plus:LicensorName</prop>
+                <prop key="Licensor Postal Code">plus:LicensorPostalCode</prop>
+                <prop key="Licensor Region">plus:LicensorRegion</prop>
+                <prop key="Licensor Street Address">plus:LicensorStreetAddress</prop>
+                <prop key="Licensor Telephone 1">plus:LicensorTelephone1</prop>
+                <prop key="Licensor Telephone 2">plus:LicensorTelephone2</prop>
+                <prop key="Licensor URL">plus:LicensorURL</prop>
+                <prop key="Location Created Sublocation">Iptc4xmpExt:LocationCreatedSublocation</prop>
+                <prop key="Location Created World Region">Iptc4xmpExt:LocationCreatedWorldRegion</prop>
+                <prop key="Location Created City">Iptc4xmpExt:LocationCreatedCity</prop>
+                <prop key="Location CreatedCountry Code">Iptc4xmpExt:LocationCreatedCountryCode</prop>
+                <prop key="Location CreatedCountry Name">Iptc4xmpExt:LocationCreatedCountryName</prop>
+                <prop key="Location CreatedProvince State">Iptc4xmpExt:LocationCreatedProvinceState</prop>
+                <prop key="Location Shown City">Iptc4xmpExt:LocationShownCity</prop>
+                <prop key="Location Shown Country Code">Iptc4xmpExt:LocationShownCountryCode</prop>
+                <prop key="Location Shown Country Name">Iptc4xmpExt:LocationShownCountryName</prop>
+                <prop key="Location Shown Province State">Iptc4xmpExt:LocationShownProvinceState</prop>
+                <prop key="Location Shown Sublocation">Iptc4xmpExt:LocationShownSublocation</prop>
+                <prop key="Location Shown World Region">Iptc4xmpExt:LocationShownWorldRegion</prop>
+                <prop key="Max Avail Height">Iptc4xmpExt:MaxAvailHeight</prop>
+                <prop key="Max Avail Width">Iptc4xmpExt:MaxAvailWidth</prop>
+                <prop key="Minor Model Age Disclosure">plus:MinorModelAgeDisclosure</prop>
+                <prop key="Model Age">Iptc4xmpExt:ModelAge</prop>
+                <prop key="Model Release ID">plus:ModelReleaseID</prop>
+                <prop key="Model Release Status">plus:ModelReleaseStatus</prop>
+                <prop key="Organisation In Image Name">Iptc4xmpExt:OrganisationInImageName</prop>
+                <prop key="Person In Image">Iptc4xmpExt:PersonInImage</prop>
+                <prop key="Property Release ID">plus:PropertyReleaseID</prop>
+                <prop key="Property Release Status">plus:PropertyReleaseStatus</prop>
+                <prop key="Reg Item Id">Iptc4xmpExt:RegItemId</prop>
+                <prop key="Reg Org Id">Iptc4xmpExt:RegOrgId</prop>
+                <prop key="Version">plus:Version</prop>
+                <!-- End of IPTC Ext -->
+            </props>
+        </property>
+    </bean>
+
+</beans>
